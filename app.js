@@ -17,13 +17,16 @@ app.use(cors({
     origin: process.env.URLFRONTEND || 'http://localhost:5173',
     credentials: true,
 }))
+
+const produccion = (process.env.NODE_ENV === 'producction')
 app.use(session({
     secret: process.env.SECRETSESSION || 'asdfrvghgdy',
     proxy: process.env.NODE_ENV === 'producction',
     cookie: {
-        secure: process.env.NODE_ENV === 'producction',
-        sameSite: 'none'
-    }
+        sameSite: 'none',
+        secure: produccion
+    }, 
+    proxy: produccion
 }))
 
 
