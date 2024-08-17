@@ -18,10 +18,10 @@ app.use(cors({
     credentials: true,
 }))
 
-const produccion = (process.env.NODE_ENV === 'producction')
+const produccion = (process.env.NODE_ENV === 'production')
 app.use(session({
     secret: process.env.SECRETSESSION || 'asdfrvghgdy',
-    proxy: process.env.NODE_ENV === 'producction',
+    proxy: process.env.NODE_ENV === 'production',
     cookie: {
         sameSite: 'none',
         secure: produccion
